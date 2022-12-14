@@ -10,3 +10,7 @@ def numbers_equal(compare_what: numeric, compare_with: numeric) -> bool:
 def solve_quadratic_equation(a: float, b: float, c: float):
     if numbers_equal(a, 0):
         raise ValueError("Zero parameter A in equation")
+
+    discriminant = b ** 2 - 4 * a * c
+    if discriminant < 0:
+        return ()
