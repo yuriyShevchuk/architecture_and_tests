@@ -22,7 +22,7 @@ class EquationTestCase(unittest.TestCase):
         actual = solve_quadratic_equation(1, 1, -2)
         self.assertEqual(actual, (1.0, -2.0))
 
-    def test_solve_quadratic_equation_return_tuple(self):
+    def test_solve_quadratic_equation_right_return_type(self):
         self.assertIsInstance(solve_quadratic_equation(2, 4, 2), tuple)
         self.assertIsInstance(solve_quadratic_equation(1, 1, -2), tuple)
         self.assertIsInstance(solve_quadratic_equation(1, 1, 1), tuple)
