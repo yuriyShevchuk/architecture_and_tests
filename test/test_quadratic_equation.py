@@ -27,6 +27,23 @@ class EquationTestCase(unittest.TestCase):
         self.assertIsInstance(solve_quadratic_equation(1, 1, -2), tuple)
         self.assertIsInstance(solve_quadratic_equation(1, 1, 1), tuple)
 
+    def test_solve_quadratic_equation_check_for_inf(self):
+        with self.assertRaises(ValueError) as exception_context:
+            solve_quadratic_equation(float('inf'), 1, 1)
+        self.assertEqual(str(exception_context.exception), INFINITE_OR_NAN_PARAMETER_ERROR)
+
+        with self.assertRaises(ValueError) as exception_context:
+            solve_quadratic_equation(1, float('-inf'), 1)
+        self.assertEqual(str(exception_context.exception), INFINITE_OR_NAN_PARAMETER_ERROR)
+
+        with self.assertRaises(ValueError) as exception_context:
+            solve_quadratic_equation(1, 1, float('inf'))
+        self.assertEqual(str(exception_context.exception), INFINITE_OR_NAN_PARAMETER_ERROR)
+
+        with self.assertRaises(ValueError) as exception_context:
+            solve_quadratic_equation(1, 1, float('nan'))
+        self.assertEqual(str(exception_context.exception), INFINITE_OR_NAN_PARAMETER_ERROR)
+
 
 if __name__ == '__main__':
     unittest.main()
